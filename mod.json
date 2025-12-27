@@ -1,0 +1,31 @@
+{
+	"geode": "4.10.0",
+	"gd": {
+		"win": "2.2074",
+		"android": "2.2074",
+		"mac": "2.2074",
+		"ios": "2.2074"
+	},
+	"id": "alphalaneous.no_buffer",
+	"name": "No Buffer!",
+	"version": "v1.0.0",
+	"developer": "Alphalaneous",
+	"description": "Disables buffer jumps!",
+	"settings": {
+		"allow-hold-jumps": {
+			"type": "bool",
+			"name": "Allow Hold Jumps",
+			"description": "Allows hold jumping in cube.",
+			"default": false
+		}
+	},
+	"tags": [
+		"gameplay",
+		"joke"
+	],
+	"links": {
+        "homepage": "https://linktr.ee/Alphalaneous",
+        "source": "https://github.com/Alphalaneous/NoBuffer",
+        "community": "https://discord.gg/Txn2CA5dHF"
+    }
+}
