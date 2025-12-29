@@ -22,13 +22,16 @@ class $modify(MyGJBaseGameLayer, GJBaseGameLayer) {
         GJBaseGameLayer::update(dt);
         auto fields = m_fields.self();
 
-        if (!m_player1->m_isShip && !m_player1->m_isDart && !m_player1->m_isRobot && !m_player1->m_isDashing && !fields->m_wasOnGroundP1) {
-            GJBaseGameLayer::handleButton(false, 1, true);
+        bool isFallingP1 = (m_player1->m_isUpsideDown ? -m_player1->m_yVelocity : m_player1->m_yVelocity) < 0;
+        bool isFallingP2 = (m_player2->m_isUpsideDown ? -m_player2->m_yVelocity : m_player2->m_yVelocity) < 0;
+
+        if (!m_player1->m_isShip && !m_player1->m_isDart && (!m_player1->m_isRobot || isFallingP1) && !m_player1->m_isDashing && !fields->m_wasOnGroundP1) {
+            m_player1->m_jumpBuffered = false;
         }
 
         if (m_level->m_twoPlayerMode) {
-            if (!m_player2->m_isShip && !m_player2->m_isDart && !m_player2->m_isRobot && !m_player2->m_isDashing && !fields->m_wasOnGroundP2) {
-                GJBaseGameLayer::handleButton(false, 1, false);
+            if (!m_player2->m_isShip && !m_player2->m_isDart && (!m_player2->m_isRobot || isFallingP2) && !m_player2->m_isDashing && !fields->m_wasOnGroundP2) {
+                m_player2->m_jumpBuffered = false;
             }
         }
     }
